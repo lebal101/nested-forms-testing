@@ -1,0 +1,32 @@
+<div class="container w-50">
+  <mat-card>
+    <mat-card-title>
+      Form
+    </mat-card-title>
+    <div class="container">
+      <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <app-name-input formControlName="nameInput"></app-name-input>
+        </div>
+        <div class="row">
+        </div>
+        <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('nameInput')}">
+        </ng-container>
+
+
+        <div class="row">
+          <button type="submit"class="btn btn-success" [disabled]="parentForm.invalid">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</div>
+
+<ng-template #formStatus let-form="form">
+  <div class="row pl-2">Value: {{form.value | json}}</div>
+  <div class="row pl-2">Touched: {{form.touched}}</div>
+  <div class="row pl-2">Dirty: {{form.dirty}}</div>
+  <div class="row pl-2">Valid: {{form.valid}}</div>
+</ng-template>
