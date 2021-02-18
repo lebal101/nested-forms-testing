@@ -5,16 +5,17 @@
     </mat-card-title>
     <div class="container">
       <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
-        <div class="row">
-          <app-name-input formControlName="nameInput"></app-name-input>
+        <div class="container px-4 border border-white rounded">
+          <div class="row">
+            <app-name-input formControlName="nameInput"></app-name-input>
+          </div>
+          <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('nameInput')}">
+          </ng-container>
         </div>
-        <div class="row">
-        </div>
-        <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('nameInput')}">
-        </ng-container>
+        <div class="container">
 
-
-        <div class="row">
+          <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm}">
+          </ng-container>
           <button type="submit"class="btn btn-success" [disabled]="parentForm.invalid">
             Save
           </button>
