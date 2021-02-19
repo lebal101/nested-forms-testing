@@ -1,5 +1,12 @@
 <ng-container [formGroup]="nameInputForm">
-  <mat-form-field>
-    <input type="text" (blur)="onTouched()" autocomplete="off" matInput formControlName="name" placeholder="Name">
+  <mat-form-field class="w-100">
+    <input type="text"
+    (blur)="onTouched()" autocomplete="off"
+    matInput formControlName="first_name" placeholder="First Name*">
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <input type="text"
+    (blur)="onTouched()" autocomplete="off"
+    matInput formControlName="last_name" placeholder="Last Name*">
   </mat-form-field>
 </ng-container>

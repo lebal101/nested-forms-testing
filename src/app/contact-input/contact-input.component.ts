@@ -2,26 +2,26 @@ import { Component, forwardRef, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-name-input',
-  templateUrl: './name-input.component.html',
-  styleUrls: ['./name-input.component.scss'],
+  selector: 'app-contact-input',
+  templateUrl: './contact-input.component.html',
+  styleUrls: ['./contact-input.component.scss'],
   providers: [
     {
    provide: NG_VALUE_ACCESSOR,
-   useExisting: forwardRef(() => NameInputComponent),
+   useExisting: forwardRef(() => ContactInputComponent),
    multi: true
  },
   {
    provide: NG_VALIDATORS,
-   useExisting: forwardRef(() => NameInputComponent),
+   useExisting: forwardRef(() => ContactInputComponent),
    multi: true
  }
 ]
 })
-export class NameInputComponent implements OnInit, ControlValueAccessor, Validator{
-  nameInputForm: FormGroup = new FormGroup({
-    first_name: new FormControl('',[Validators.required]),
-    last_name: new FormControl('', [Validators.required])
+export class ContactInputComponent implements ControlValueAccessor, Validator {
+
+  contactInputForm: FormGroup = new FormGroup({
+    email: new FormControl('',[Validators.email])
   })
 
   constructor() { }
@@ -36,21 +36,21 @@ export class NameInputComponent implements OnInit, ControlValueAccessor, Validat
     if(val){
       // console.log(val)
       // this.nameInputForm.get('name').setValue(val.name);
-      this.nameInputForm.setValue(val);
+      this.contactInputForm.setValue(val);
       // this.nameInputForm.setValue(val, { emitEvent: false });
     }
   }
   registerOnChange(fn: any): void {
-    this.nameInputForm.valueChanges.subscribe(fn);
+    this.contactInputForm.valueChanges.subscribe(fn);
   }
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    isDisabled ? this.nameInputForm.disable() : this.nameInputForm.enable();
+    isDisabled ? this.contactInputForm.disable() : this.contactInputForm.enable();
   }
   validate(control: AbstractControl): ValidationErrors {
-    return this.nameInputForm.valid ? null :
+    return this.contactInputForm.valid ? null :
     { invalidForm: {valid: false, message: "nameInputForm fields are invalid"}};
   }
 }

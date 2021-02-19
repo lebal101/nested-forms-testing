@@ -1,0 +1,6 @@
+<ng-container [formGroup]="contactInputForm">
+  <mat-form-field class="w-100">
+    <input type="text"
+    (blur)="onTouched()" autocomplete="off" matInput formControlName="email" placeholder="Email (optional)">
+  </mat-form-field>
+</ng-container>

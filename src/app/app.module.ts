@@ -11,6 +11,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NameInputComponent } from './name-input/name-input.component';
+import { ContactInputComponent } from './contact-input/contact-input.component';
 
 
 
@@ -19,7 +20,8 @@ import { NameInputComponent } from './name-input/name-input.component';
   declarations: [
     AppComponent,
     ParentFormComponent,
-    NameInputComponent
+    NameInputComponent,
+    ContactInputComponent
   ],
   imports: [
     BrowserModule,

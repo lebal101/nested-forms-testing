@@ -1,33 +1,49 @@
-<div class="container w-50">
+<div class="container">
   <mat-card>
     <mat-card-title>
-      Form
+      Form Card
     </mat-card-title>
     <div class="container">
       <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
-        <div class="container px-4 border border-white rounded">
-          <div class="row">
-            <app-name-input formControlName="nameInput"></app-name-input>
-          </div>
-          <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('nameInput')}">
-          </ng-container>
-        </div>
-        <div class="container">
+        <div class="container mb-2 border border-white rounded">
+          <h3 class="text-center text-primary">Form</h3>
+          <div class="container">
+            <div class="row">
+              <div class="col my-2 border border-white">
+                <h4 class="text-center text-primary">Name SubForm</h4>
+                <app-name-input formControlName="nameInput"></app-name-input>
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('nameInput')}">
+                </ng-container>
+              </div>
 
+              <div class="col my-2 border border-white">
+                <h4 class="text-center text-primary">Contact SubForm</h4>
+                <app-contact-input formControlName="contactInput"></app-contact-input>
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('contactInput')}">
+                </ng-container>
+              </div>
+
+            </div>
+          </div>
           <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm}">
           </ng-container>
-          <button type="submit"class="btn btn-success" [disabled]="parentForm.invalid">
-            Save
-          </button>
         </div>
+          <button type="submit"class="btn btn-success" [disabled]="!parentForm.valid">Save</button>
+          <button [disabled]="!formHasChanged()" type="button" (click)="resetForm()" class="btn btn-warning">Reset</button>
+          <button type="button" class="btn btn-secondary" (click)="parentForm.disabled?parentForm.enable():parentForm.disable()">Toggle Disabled State</button>
       </form>
     </div>
   </mat-card>
 </div>
 
 <ng-template #formStatus let-form="form">
-  <div class="row pl-2">Value: {{form.value | json}}</div>
-  <div class="row pl-2">Touched: {{form.touched}}</div>
-  <div class="row pl-2">Dirty: {{form.dirty}}</div>
-  <div class="row pl-2">Valid: {{form.valid}}</div>
+  <div class="container w-100">
+    <div class="row pl-2">Value: {{form.value | json}}</div>
+    <div class="row pl-2">Touched: {{form.touched}}</div>
+    <div class="row pl-2">Dirty: {{form.dirty}}</div>
+    <div class="row pl-2">Pristine: {{form.pristine}}</div>
+    <div class="row pl-2">Valid: {{form.valid}}</div>
+    <div class="row pl-2">Disabled: {{form.disabled}}</div>
+  </div>
+
 </ng-template>
