@@ -1,43 +1,120 @@
-<div class="container">
+<!----------------------- ControlValueAccessor ----------------------->
+<div class="container mb-3">
   <mat-card>
-    <mat-card-title>
-      Form Card
-    </mat-card-title>
     <div class="container">
-      <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="parentCVAForm" (ngSubmit)="onCVASubmit()">
         <div class="container mb-2 border border-white rounded">
-          <h3 class="text-center text-primary">Form</h3>
+          <h3 class="text-center text-primary">Form via ControlValueAccessor</h3>
           <div class="container">
             <div class="row">
-              <div class="col my-2 border border-white">
-                <h4 class="text-center text-primary">Name SubForm</h4>
-                <app-name-input formControlName="nameInput"></app-name-input>
-                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('nameInput')}">
-                </ng-container>
-              </div>
 
               <div class="col my-2 border border-white">
+                <h4 class="text-center text-primary">Name SubForm</h4>
+                <app-cva-name-input formControlName="nameInput"></app-cva-name-input>
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentCVAForm.get('nameInput')}">
+                </ng-container>
+              </div>
+              <div class="col my-2 border border-white">
                 <h4 class="text-center text-primary">Contact SubForm</h4>
-                <app-contact-input formControlName="contactInput"></app-contact-input>
-                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm.get('contactInput')}">
+                <app-cva-contact-input formControlName="contactInput"></app-cva-contact-input>
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentCVAForm.get('contactInput')}">
                 </ng-container>
               </div>
 
             </div>
           </div>
-          <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentForm}">
+          <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentCVAForm}">
           </ng-container>
         </div>
-          <button type="submit"class="btn btn-success" [disabled]="!parentForm.valid">Save</button>
-          <button [disabled]="!formHasChanged()" type="button" (click)="resetForm()" class="btn btn-warning">Reset</button>
-          <button type="button" class="btn btn-secondary" (click)="parentForm.disabled?parentForm.enable():parentForm.disable()">Toggle Disabled State</button>
+          <button type="submit"class="btn btn-success" [disabled]="!parentCVAForm.valid">Save</button>
+          <button [disabled]="!cvaFormHasChanged()" type="button" (click)="resetCVAForm()" class="btn btn-warning">Reset</button>
+          <button type="button" class="btn btn-secondary"
+            (click)="parentCVAForm.disabled?parentCVAForm.enable():parentCVAForm.disable()">
+            Toggle Disabled State
+          </button>
+      </form>
+    </div>
+  </mat-card>
+</div>
+
+<!----------------------- NGControl ----------------------->
+<!-- <div class="container mb-3">
+  <mat-card>
+    <div class="container">
+      <form [formGroup]="parentNGCForm" (ngSubmit)="onNGCSubmit()">
+        <div class="container mb-2 border border-white rounded">
+          <h3 class="text-center text-primary">Form via NGControl</h3>
+          <div class="container">
+            <div class="row">
+
+              <div class="col my-2 border border-white">
+                <h4 class="text-center text-primary">Name SubForm</h4>
+                <app-ngc-name-input formControlName="nameInput"></app-ngc-name-input>
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentNGCForm.get('nameInput')}">
+                </ng-container>
+              </div>
+              <div class="col my-2 border border-white">
+                <h4 class="text-center text-primary">Contact SubForm</h4>
+                <app-ngc-contact-input formControlName="contactInput"></app-ngc-contact-input>
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentCVAForm.get('contactInput')}">
+                </ng-container>
+              </div>
+
+            </div>
+          </div>
+          <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentNGCForm}">
+          </ng-container>
+        </div>
+          <button type="submit"class="btn btn-success" [disabled]="!parentNGCForm.valid">Save</button>
+          <button [disabled]="!ngcFormHasChanged" type="button" (click)="resetNGCForm()" class="btn btn-warning">Reset</button>
+          <button type="button" class="btn btn-secondary"
+            (click)="parentNGCForm.disabled?parentNGCForm.enable():parentNGCForm.disable()">
+            Toggle Disabled State
+          </button>
+      </form>
+    </div>
+  </mat-card>
+</div> -->
+
+<!----------------------- ControlContainer ----------------------->
+<div class="container">
+  <mat-card>
+    <div class="container">
+      <form [formGroup]="parentCCForm" (ngSubmit)="onCCSubmit()">
+        <div class="container mb-2 border border-white rounded">
+          <h3 class="text-center text-primary">Form via ControlContainer</h3>
+          <div class="container">
+            <div class="row">
+              <div class="col my-2 border border-white">
+                <h4 class="text-center text-primary">Name SubForm</h4>
+                <app-cc-name-input></app-cc-name-input>
+                <!-- <app-cc-name-input-wrapper></app-cc-name-input-wrapper> -->
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentCCForm.get('nameInput')}">
+                </ng-container>
+              </div>
+
+              <div class="col my-2 border border-white">
+                <h4 class="text-center text-primary">Contact SubForm</h4>
+                <app-cc-contact-input formControlName="contactInput"></app-cc-contact-input>
+                <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentCCForm.get('contactInput')}">
+                </ng-container>
+              </div>
+
+            </div>
+          </div>
+          <ng-container *ngTemplateOutlet="formStatus, context: {'form': parentCCForm}">
+          </ng-container>
+        </div>
+          <button type="submit"class="btn btn-success" [disabled]="!parentCCForm.valid">Save</button>
+          <!-- <button [disabled]="!CVAformHasChanged()" type="button" (click)="resetCVAForm()" class="btn btn-warning">Reset</button> -->
+          <button type="button" class="btn btn-secondary" (click)="parentCCForm.disabled?parentCCForm.enable():parentCCForm.disable()">Toggle Disabled State</button>
       </form>
     </div>
   </mat-card>
 </div>
 
 <ng-template #formStatus let-form="form">
-  <div class="container w-100">
+  <div class="container w-100 text-warning">
     <div class="row pl-2">Value: {{form.value | json}}</div>
     <div class="row pl-2">Touched: {{form.touched}}</div>
     <div class="row pl-2">Dirty: {{form.dirty}}</div>

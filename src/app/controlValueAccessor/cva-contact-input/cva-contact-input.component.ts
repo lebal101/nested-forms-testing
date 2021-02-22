@@ -2,26 +2,27 @@ import { Component, forwardRef, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-contact-input',
-  templateUrl: './contact-input.component.html',
-  styleUrls: ['./contact-input.component.scss'],
+  selector: 'app-cva-contact-input',
+  templateUrl: './cva-contact-input.component.html',
+  // styleUrls: ['./cva-contact-input.component.scss'],
   providers: [
     {
    provide: NG_VALUE_ACCESSOR,
-   useExisting: forwardRef(() => ContactInputComponent),
+   useExisting: forwardRef(() => CVAContactInputComponent),
    multi: true
  },
   {
    provide: NG_VALIDATORS,
-   useExisting: forwardRef(() => ContactInputComponent),
+   useExisting: forwardRef(() => CVAContactInputComponent),
    multi: true
  }
 ]
 })
-export class ContactInputComponent implements ControlValueAccessor, Validator {
+export class CVAContactInputComponent implements ControlValueAccessor, Validator {
 
   contactInputForm: FormGroup = new FormGroup({
-    email: new FormControl('',[Validators.email])
+    email: new FormControl('',[Validators.email]),
+    worksOnWeekends: new FormControl('', [])
   })
 
   constructor() { }
@@ -32,12 +33,14 @@ export class ContactInputComponent implements ControlValueAccessor, Validator {
   public onTouched: () => void = () => {};
 
   writeValue(val: any): void {
-    console.log("write")
+    console.log("cva-contact-input: write")
     if(val){
       // console.log(val)
-      // this.nameInputForm.get('name').setValue(val.name);
-      this.contactInputForm.setValue(val);
-      // this.nameInputForm.setValue(val, { emitEvent: false });
+      // this.contactInputForm.get('name').setValue(val.name);
+      // this.contactInputForm.get('email').setValue(val.email, {emitEvent: false});
+      // this.contactInputForm.get('worksOnWeekends').
+
+      this.contactInputForm.setValue(val, { emitEvent: false });
     }
   }
   registerOnChange(fn: any): void {

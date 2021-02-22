@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContactInputComponent } from './contact-input.component';
+import { NgcNameInputComponent } from './ngc-name-input.component';
 
-describe('ContactInputComponent', () => {
-  let component: ContactInputComponent;
-  let fixture: ComponentFixture<ContactInputComponent>;
+describe('NgcNameInputComponent', () => {
+  let component: NgcNameInputComponent;
+  let fixture: ComponentFixture<NgcNameInputComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactInputComponent ]
+      declarations: [ NgcNameInputComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ContactInputComponent);
+    fixture = TestBed.createComponent(NgcNameInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

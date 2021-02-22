@@ -10,9 +10,12 @@ import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NameInputComponent } from './name-input/name-input.component';
-import { ContactInputComponent } from './contact-input/contact-input.component';
-
+import { CVANameInputComponent } from './controlValueAccessor/name-input/cva-name-input.component';
+import { CVAContactInputComponent } from './controlValueAccessor/cva-contact-input/cva-contact-input.component';
+import { CcNameInputComponent } from './controlContainer/cc-name-input/cc-name-input.component';
+import { CcNameInputWrapperComponent } from './controlContainer/cc-name-input/cc-name-input-wrapper/cc-name-input-wrapper.component';
+import { CcContactInputComponent } from './controlContainer/cc-contact-input/cc-contact-input.component';
+import { NgcNameInputComponent } from './ngControl/ngc-name-input/ngc-name-input.component'
 
 
 
@@ -20,8 +23,12 @@ import { ContactInputComponent } from './contact-input/contact-input.component';
   declarations: [
     AppComponent,
     ParentFormComponent,
-    NameInputComponent,
-    ContactInputComponent
+    CVANameInputComponent,
+    CVAContactInputComponent,
+    CcNameInputComponent,
+    CcNameInputWrapperComponent,
+    CcContactInputComponent,
+    NgcNameInputComponent
   ],
   imports: [
     BrowserModule,
