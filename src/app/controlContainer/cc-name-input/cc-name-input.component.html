@@ -6,4 +6,4 @@
     <input matInput autocomplete="off" type="text" formControlName="last_name" placeholder="Last Name*">
   </mat-form-field>
 </ng-container>
-<!-- <div>{{form.get('nameInput').value | json}}</div> -->
+<app-form-properties [form]="parentForm.get('nameInput')"></app-form-properties>

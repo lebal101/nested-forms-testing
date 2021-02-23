@@ -13,9 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CVANameInputComponent } from './controlValueAccessor/name-input/cva-name-input.component';
 import { CVAContactInputComponent } from './controlValueAccessor/cva-contact-input/cva-contact-input.component';
 import { CcNameInputComponent } from './controlContainer/cc-name-input/cc-name-input.component';
-import { CcNameInputWrapperComponent } from './controlContainer/cc-name-input/cc-name-input-wrapper/cc-name-input-wrapper.component';
 import { CcContactInputComponent } from './controlContainer/cc-contact-input/cc-contact-input.component';
-import { NgcNameInputComponent } from './ngControl/ngc-name-input/ngc-name-input.component'
+import { FormPropertiesComponent } from './form-properties/form-properties.component';
 
 
 
@@ -26,9 +25,8 @@ import { NgcNameInputComponent } from './ngControl/ngc-name-input/ngc-name-input
     CVANameInputComponent,
     CVAContactInputComponent,
     CcNameInputComponent,
-    CcNameInputWrapperComponent,
     CcContactInputComponent,
-    NgcNameInputComponent
+    FormPropertiesComponent
   ],
   imports: [
     BrowserModule,

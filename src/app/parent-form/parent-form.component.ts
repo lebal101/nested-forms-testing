@@ -13,7 +13,6 @@ export class ParentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCVAForm();
-    // this.initNGCForm();
   }
 
   initialForm = {
@@ -42,7 +41,7 @@ export class ParentFormComponent implements OnInit {
     this.parentCVAForm.get('contactInput').setValue(this.initialForm.contactInput);
 
     this.parentCVAForm.valueChanges.subscribe(_ => {
-      console.log("parentFormHasChanged")
+      // console.log("CVA parentFormHasChanged")
       this.cvaHasChanged =
         JSON.stringify(this.parentCVAForm.value) !== JSON.stringify(this.initialForm)
     })
@@ -56,47 +55,6 @@ export class ParentFormComponent implements OnInit {
     this.parentCVAForm.reset(this.initialForm)
     this.parentCVAForm.markAsPristine();
   }
-
-  cvaFormHasChanged(){
-    // console.log("hasChanged is " +  this.cvaHasChanged)
-    return this.cvaHasChanged;
-  }
-
-  /************************* NGControl ********************************************/
-
-  // ngcHasChanged = false;
-
-  // parentNGCForm: FormGroup = new FormGroup({
-  //   nameInput: new FormControl(null, [Validators.minLength(3)]),
-  //   // contactInput: new FormControl()
-  // })
-
-  // initNGCForm(){
-  //   this.parentNGCForm.get('nameInput').setValue(this.initialForm.nameInput);
-  //   // this.parentNGCForm.get('contactInput').setValue(this.initialForm.contactInput);
-
-  //   this.parentNGCForm.valueChanges.subscribe(_ => {
-  //     console.log("parentFormHasChanged")
-  //     // console.log(this.parentNGCForm.value)
-  //     this.ngcHasChanged =
-  //       JSON.stringify(this.parentNGCForm.value) !== JSON.stringify(this.initialForm)
-  //   })
-  // }
-
-  // onNGCSubmit(){
-  //   console.log('NGControl Form:', this.parentNGCForm.value)
-  // }
-
-  // ngcFormHasChanged(){
-  //   // console.log("hasChanged is " +  this.ngcHasChanged)
-  //   return this.ngcHasChanged;
-  // }
-
-  // resetNGCForm(){
-  //   this.parentNGCForm.reset(this.initialForm)
-  //   this.parentNGCForm.markAsPristine();
-  // }
-
   /********************Control Container*************************/
 
   parentCCForm = new FormGroup({});

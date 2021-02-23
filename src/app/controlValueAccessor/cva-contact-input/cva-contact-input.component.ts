@@ -33,12 +33,11 @@ export class CVAContactInputComponent implements ControlValueAccessor, Validator
   public onTouched: () => void = () => {};
 
   writeValue(val: any): void {
-    console.log("cva-contact-input: write")
+    console.log("write")
     if(val){
-      // console.log(val)
-      // this.contactInputForm.get('name').setValue(val.name);
+      // Auch möglich:
+      // this.contactInputForm.get('name').setValue(val.name, {emitEvent: false});
       // this.contactInputForm.get('email').setValue(val.email, {emitEvent: false});
-      // this.contactInputForm.get('worksOnWeekends').
 
       this.contactInputForm.setValue(val, { emitEvent: false });
     }
@@ -53,6 +52,7 @@ export class CVAContactInputComponent implements ControlValueAccessor, Validator
     isDisabled ? this.contactInputForm.disable() : this.contactInputForm.enable();
   }
   validate(control: AbstractControl): ValidationErrors {
+    // console.log('validate')
     return this.contactInputForm.valid ? null :
     { invalidForm: {valid: false, message: "nameInputForm fields are invalid"}};
   }

@@ -34,9 +34,9 @@ export class CVANameInputComponent implements OnInit, ControlValueAccessor, Vali
   writeValue(val: any): void {
     console.log("cva-name-input: write")
     if(val){
-      // console.log(val)
-      // this.nameInputForm.get('first_name').setValue(val.name);
-      // this.nameInputForm.setValue(val);
+      // Auch möglich:
+      // this.nameInputForm.get('first_name').setValue(val.name, { emitEvent: false });
+      // this.nameInputForm.get('last_name').setValue(val.name, { emitEvent: false });
       this.nameInputForm.setValue(val, { emitEvent: false });
     }
   }
@@ -50,7 +50,7 @@ export class CVANameInputComponent implements OnInit, ControlValueAccessor, Vali
     isDisabled ? this.nameInputForm.disable() : this.nameInputForm.enable();
   }
   validate(control: AbstractControl): ValidationErrors {
-    return this.nameInputForm.valid ? null :
+    return this.nameInputForm.valid? null :
     { invalidForm: {valid: false, message: "nameInputForm fields are invalid"}};
   }
 }
