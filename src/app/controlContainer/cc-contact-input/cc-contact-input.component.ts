@@ -23,5 +23,4 @@ export class CcContactInputComponent implements OnInit {
       worksOnWeekends: new FormControl(false)
     }))
   }
-
 }

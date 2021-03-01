@@ -8,13 +8,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   // styleUrls: ['./parent-form.component.scss']
 })
 export class ParentFormComponent implements OnInit {
-  constructor(){
-  }
-
-  ngOnInit(): void {
-    this.initCVAForm();
-  }
-
   initialForm = {
     nameInput: {
       first_name: 'Thomas',
@@ -26,6 +19,12 @@ export class ParentFormComponent implements OnInit {
     }
   };
 
+  constructor(){
+  }
+
+  ngOnInit(): void {
+    this.initCVAForm();
+  }
 
   /*******************Control Value Accessor ***************/
 
@@ -37,11 +36,12 @@ export class ParentFormComponent implements OnInit {
   })
 
   initCVAForm(){
-    this.parentCVAForm.get('nameInput').setValue(this.initialForm.nameInput);
-    this.parentCVAForm.get('contactInput').setValue(this.initialForm.contactInput);
+    // this.parentCVAForm.get('nameInput').setValue(this.initialForm.nameInput);
+    // this.parentCVAForm.get('contactInput').setValue(this.initialForm.contactInput);
+    this.parentCVAForm.setValue(this.initialForm)
 
     this.parentCVAForm.valueChanges.subscribe(_ => {
-      // console.log("CVA parentFormHasChanged")
+      // console.log("CVA parent form has changed.")
       this.cvaHasChanged =
         JSON.stringify(this.parentCVAForm.value) !== JSON.stringify(this.initialForm)
     })
